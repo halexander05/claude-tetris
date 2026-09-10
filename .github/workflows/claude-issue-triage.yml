@@ -87,8 +87,9 @@ jobs:
                - `good first issue` si el arreglo es acotado y de bajo riesgo
                - siempre `triaged`
                No quites labels que ya haya puesto una persona.
-            5. Publica el diagnóstico como comentario, en **español**, con este
-               formato exacto y empezando por el marcador HTML:
+            5. Publica el diagnóstico como comentario, en **español** y escrito
+               en **Markdown válido de GitHub (GFM)**, con este formato exacto y
+               empezando por el marcador HTML:
 
                ```
                <!-- claude-triage -->
@@ -130,6 +131,20 @@ jobs:
               ni abras PRs**. Tu salida son las labels y el comentario.
             - Sé concreto y verificable: cita archivos y funciones reales que hayas
               leído, nunca inventes rutas ni líneas.
+            - **Todo lo que comentes debe estar en formato Markdown que GitHub
+              entienda (GitHub Flavored Markdown).** En concreto:
+              - Encabezados con `##`/`###`, negritas con `**...**`, listas con
+                `-` y listas numeradas con `1.`.
+              - Rutas, funciones, variables y valores siempre entre backticks
+                (`` `game.js:123` ``, `` `collide()` ``, `` `dropInterval` ``).
+              - Fragmentos de código en bloques cercados con triple backtick,
+                indicando el lenguaje (js, bash) en la línea de apertura.
+              - Enlaces con `[texto](url)` y referencias a issues/PRs con `#123`.
+              - Tablas con la sintaxis de GFM y listas de tareas con `- [ ]`
+                cuando aporten claridad.
+              - Deja una línea en blanco entre bloques (párrafos, listas,
+                encabezados) para que GitHub los renderice bien, y no uses HTML
+                salvo el marcador `<!-- claude-triage -->`.
             - Si el issue es demasiado vago para diagnosticarlo, dilo abiertamente,
               pon `needs-info` y lista las preguntas concretas que hay que responder.
             - Este diagnóstico se usará después como base para implementar la
