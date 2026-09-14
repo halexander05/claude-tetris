@@ -155,7 +155,8 @@ const START_LEVEL_KEY = 'tetris-start-level';
 let board, current, next, score, lines, level, paused, gameOver, lastTime, dropAccum, dropInterval, animId;
 let gridColor, boardBg;
 let skin = SKINS.retro;
-let startLevel = loadStartLevel();
+let startLevel = loadStartLevel(); // preferencia para la PRÓXIMA partida
+let gameStartLevel;                // nivel inicial de la partida en curso
 
 function clampStartLevel(value) {
   const n = parseInt(value, 10);
@@ -293,7 +294,7 @@ function clearLines() {
   if (cleared) {
     lines += cleared;
     score += (LINE_SCORES[cleared] || 0) * level;
-    level = Math.max(startLevel, Math.floor(lines / 10) + 1);
+    level = Math.max(gameStartLevel, Math.floor(lines / 10) + 1);
     dropInterval = speedForLevel(level);
     updateHUD();
   }
@@ -468,7 +469,8 @@ function init() {
   board = createBoard();
   score = 0;
   lines = 0;
-  level = startLevel;
+  gameStartLevel = startLevel;
+  level = gameStartLevel;
   paused = false;
   pauseMenu.classList.add('hidden');
   gameOver = false;
