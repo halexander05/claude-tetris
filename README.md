@@ -173,9 +173,22 @@ Algunos parámetros fáciles de tunear en `game.js`:
 | `COLS`         | Columnas del tablero                     | `10`                  |
 | `ROWS`         | Filas del tablero                        | `20`                  |
 | `BLOCK`        | Tamaño en píxeles de cada celda          | `30`                  |
-| `COLORS`       | Paleta de colores por tipo de pieza      | 7 colores             |
+| `SKINS`        | Skins visuales (paleta, fondo, dibujo)   | 4 skins               |
 | `LINE_SCORES`  | Puntos por 1, 2, 3 o 4 líneas eliminadas | `[0,100,300,500,800]` |
 | `dropInterval` | Velocidad inicial de caída en ms         | `1000`                |
+
+### Skins visuales
+
+En el panel lateral, el selector **SKIN** cambia la apariencia completa del tablero y de la vista previa sin recargar la página:
+
+| Skin          | Aspecto                                                                 |
+| ------------- | ----------------------------------------------------------------------- |
+| **Retro**     | Bloques cuadrados y colores planos (estilo original); respeta el modo claro/oscuro. |
+| **Neon**      | Fondo negro, colores saturados y efecto _glow_ con `shadowBlur`.        |
+| **Pastel**    | Colores suaves sobre fondo crema y bloques con bordes redondeados.      |
+| **Pixel art** | Bloques con bisel y textura de píxeles dibujada sobre cada celda.       |
+
+La preferencia se guarda en `localStorage` (clave `tetris-skin`). Cada skin es un objeto en `SKINS` con `colors` (mismo índice que `PIECES`), `bg`, `grid` y su propia función `drawBlock`; para añadir una nueva basta con agregar una entrada a `SKINS` y una `<option>` en `index.html`.
 
 > Si cambias `COLS`, `ROWS` o `BLOCK`, recuerda ajustar también `width` y `height` del `<canvas id="board">` en `index.html` para que coincida (`COLS × BLOCK` × `ROWS × BLOCK`).
 
