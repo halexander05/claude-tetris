@@ -270,7 +270,8 @@ kbd {
   color: var(--overlay-score-color);
 }
 
-#restart-btn {
+#restart-btn,
+.btn {
   margin-top: 8px;
   background: var(--restart-bg);
   color: var(--restart-text);
@@ -284,6 +285,71 @@ kbd {
   transition: background 0.15s;
 }
 
-#restart-btn:hover {
+#restart-btn:hover,
+.btn:hover {
   background: var(--restart-hover);
+}
+
+/* ---- Menú de pausa ---- */
+.pause-box {
+  gap: 10px;
+}
+
+#pause-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--title-color);
+  margin-bottom: 4px;
+}
+
+.pause-box .btn {
+  margin-top: 0;
+  width: 200px;
+}
+
+.pause-box .btn-secondary {
+  background: var(--kbd-bg);
+  color: var(--body-text);
+  border: 1px solid var(--kbd-border);
+}
+
+.pause-box .btn-secondary:hover {
+  background: var(--kbd-border);
+}
+
+#pause-controls {
+  width: 200px;
+  padding: 8px 12px;
+  border: 1px solid var(--board-border);
+  border-radius: 6px;
+  background: var(--board-bg);
+}
+
+#pause-controls.hidden {
+  display: none;
+}
+
+.start-level {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+  margin-top: 4px;
+}
+
+#start-level-select {
+  background: var(--kbd-bg);
+  color: var(--body-text);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.start-level-hint {
+  font-size: 11px;
+  color: var(--control-text);
 }
